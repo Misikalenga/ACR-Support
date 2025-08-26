@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACR • Action commune pour la republique • RDC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans bg-gray-50">
+<!-- Top Banner -->
+<div class="flag-colors w-full"></div>
+
+<!-- Header -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Logo -->
+    <div class="flex items-center">
+      <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-xl mr-3">ACR</div>
+      <div>
+        <h1 class="text-xl font-bold text-blue-800">Action commune pour la republique</h1>
+        <p class="text-xs text-gray-600 uppercase">Soutien au parti politique ACR</p>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-button"
+            class="lg:hidden text-blue-800"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Ouvrir le menu">
+      <i class="fas fa-bars text-2xl"></i>
+      <span class="sr-only">Menu</span>
+    </button>
+
+    <!-- Navigation (Desktop) -->
+    <nav class="hidden lg:flex space-x-8">
+      <a href="#accueil" class="text-blue-800 font-medium hover:text-yellow-500 transition">Accueil</a>
+      <a href="#programme" class="text-gray-700 hover:text-yellow-500 transition">Notre Programme</a>
+      <a href="#actualites" class="text-gray-700 hover:text-yellow-500 transition">Actualités</a>
+      <a href="#equipe" class="text-gray-700 hover:text-yellow-500 transition">Notre Équipe</a>
+      <a href="#contact" class="text-gray-700 hover:text-yellow-500 transition">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu (Slide-down) -->
+  <div id="mobile-menu"
+       class="lg:hidden bg-white px-4 shadow-lg overflow-hidden
+              max-h-0 opacity-0 -translate-y-2
+              transition-[max-height,opacity,transform,padding] duration-700 ease-in-out"
+       aria-hidden="true">
+    <nav class="py-0"> <!-- padding animé via JS -->
+      <a href="#accueil" class="block py-2 text-blue-800 font-medium">Accueil</a>
+      <a href="#programme" class="block py-2 text-gray-700">Notre Programme</a>
+      <a href="#actualites" class="block py-2 text-gray-700">Actualités</a>
+      <a href="#equipe" class="block py-2 text-gray-700">Notre Équipe</a>
+      <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+(() => {
+  const btn  = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const nav  = menu.querySelector('nav');
+  const icon = btn.querySelector('i');
+
+  function openMenu() {
+    menu.classList.remove('max-h-0','opacity-0','-translate-y-2');
+    menu.classList.add('max-h-[60vh]','opacity-100','translate-y-0');
+    nav.classList.remove('py-0'); nav.classList.add('py-4'); // padding doux
+    btn.setAttribute('aria-expanded','true');
+    menu.setAttribute('aria-hidden','false');
+    icon.classList.remove('fa-bars'); icon.classList.add('fa-times');
+    btn.setAttribute('aria-label','Fermer le menu');
+  }
+
+  function closeMenu() {
+    menu.classList.add('max-h-0','opacity-0','-translate-y-2');
+    menu.classList.remove('max-h-[60vh]','opacity-100','translate-y-0');
+    nav.classList.remove('py-4'); nav.classList.add('py-0');
+    btn.setAttribute('aria-expanded','false');
+    menu.setAttribute('aria-hidden','true');
+    icon.classList.remove('fa-times'); icon.classList.add('fa-bars');
+    btn.setAttribute('aria-label','Ouvrir le menu');
+  }
+
+  function toggleMenu() {
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  }
+
+  btn.addEventListener('click', toggleMenu);
+
+  // Ferme le menu après un clic sur un lien
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Optionnel : fermer au resize quand on repasse en desktop
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 1024px)').matches) closeMenu();
+  });
+})();
+</script>
+
+    
+<!-- Hero Carousel full-width (fonds différents) -->
+<section id="accueil"
+         class="relative text-white overflow-hidden w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
+  <div id="hero-carousel"
+       class="relative w-full min-h-[22rem] md:min-h-[28rem]"
+       role="region" aria-roledescription="carousel" aria-label="Hero messages">
+
+    <!-- Slide 1 -->
+    <div class="hc-slide absolute inset-0 flex items-center justify-center
+                transition-opacity duration-700 opacity-100 bg-center bg-cover bg-no-repeat"
+         data-index="0" role="group" aria-roledescription="slide" aria-label="1 sur 3"
+         style="background-image:
+                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+                url('/img/hero-1.jpg');">
+      <div class="container mx-auto px-4 py-20 md:py-32 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Bâtissons ensemble l'avenir de la RDC</h2>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Unir · Protéger · Nourrir</p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+          <a href="#adhesion" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300">Adhérer au parti</a>
+          <a href="#programme" class="bg-transparent hover:bg-blue-900 border-2 border-white text-white font-bold py-3 px-8 rounded-full transition duration-300">Actualités</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="hc-slide absolute inset-0 flex items-center justify-center
+                transition-opacity duration-700 opacity-0 pointer-events-none bg-center bg-cover bg-no-repeat"
+         data-index="1" role="group" aria-roledescription="slide" aria-label="2 sur 3" aria-hidden="true" tabindex="-1"
+         style="background-image:
+                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+                url('/img/hero-2.jpg');">
+      <div class="container mx-auto px-4 py-20 md:py-32 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Tous engagés : politique de l’amour</h2>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">L’amour au cœur, la discipline en garde, l’agriculture en moteur.</p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+          <a href="#adhesion" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300">Rejoindre le mouvement</a>
+          <a href="#programme" class="bg-transparent hover:bg-blue-900 border-2 border-white text-white font-bold py-3 px-8 rounded-full transition duration-300">Découvrir le programme</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="hc-slide absolute inset-0 flex items-center justify-center
+                transition-opacity duration-700 opacity-0 pointer-events-none bg-center bg-cover bg-no-repeat"
+         data-index="2" role="group" aria-roledescription="slide" aria-label="3 sur 3" aria-hidden="true" tabindex="-1"
+         style="background-image:
+                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+                url('/img/hero-3.jpg');">
+      <div class="container mx-auto px-4 py-20 md:py-32 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">Amour civique, sécurité nationale, renaissance agricole</h2>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Pour une armée forte et disciplinée, portée par une politique agricole ambitieuse.</p>
+        <div class="flex flex-col md:flex-row justify-center gap-4">
+          <a href="#adhesion" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300">Adhérer maintenant</a>
+          <a href="#programme" class="bg-transparent hover:bg-blue-900 border-2 border-white text-white font-bold py-3 px-8 rounded-full transition duration-300">Voir les actualités</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contrôles -->
+    <button type="button" aria-label="Précédent"
+            class="hc-prev absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30
+                   backdrop-blur px-3 py-2 rounded-full focus:outline-none focus:ring z-10">‹</button>
+    <button type="button" aria-label="Suivant"
+            class="hc-next absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30
+                   backdrop-blur px-3 py-2 rounded-full focus:outline-none focus:ring z-10">›</button>
+
+    <!-- Indicateurs -->
+    <div class="hc-dots absolute left-1/2 -translate-x-1/2 bottom-2 md:bottom-4 flex gap-2 z-10">
+      <button class="hc-dot w-2.5 h-2.5 rounded-full bg-white/80 ring-2 ring-white/30" data-to="0" aria-label="Aller au slide 1"></button>
+      <button class="hc-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70" data-to="1" aria-label="Aller au slide 2"></button>
+      <button class="hc-dot w-2.5 h-2.5 rounded-full bg-white/40 hover:bg-white/70" data-to="2" aria-label="Aller au slide 3"></button>
+    </div>
+  </div>
+</section>
+
+
+<script>
+(() => {
+  const root   = document.getElementById('hero-carousel');
+  const slides = Array.from(root.querySelectorAll('.hc-slide'));
+  const dots   = Array.from(root.querySelectorAll('.hc-dot'));
+  const prev   = root.querySelector('.hc-prev');
+  const next   = root.querySelector('.hc-next');
+
+  let index = 0;
+  let timer = null;
+  const DELAY = 6000;
+
+  function show(i) {
+    index = (i + slides.length) % slides.length;
+
+    slides.forEach((s, k) => {
+      const active = k === index;
+      s.style.opacity = active ? '1' : '0';
+      s.classList.toggle('pointer-events-none', !active);
+      s.toggleAttribute('aria-hidden', !active);
+      if (!active) s.setAttribute('tabindex', '-1'); else s.removeAttribute('tabindex');
+    });
+
+    dots.forEach((d, k) => {
+      d.className = 'hc-dot w-2.5 h-2.5 rounded-full ' + (k === index ? 'bg-white/80 ring-2 ring-white/30' : 'bg-white/40 hover:bg-white/70');
+      d.setAttribute('aria-current', k === index ? 'true' : 'false');
+    });
+  }
+
+  function start() { stop(); timer = setInterval(() => show(index + 1), DELAY); }
+  function stop()  { if (timer) clearInterval(timer); timer = null; }
+
+  prev.addEventListener('click', () => { show(index - 1); start(); });
+  next.addEventListener('click', () => { show(index + 1); start(); });
+  dots.forEach(d => d.addEventListener('click', () => { show(parseInt(d.dataset.to, 10)); start(); }));
+
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', start);
+
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); show(index - 1); start(); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); start(); }
+  });
+
+  show(0);
+  start();
+})();
+</script>
+
+    
+    <!-- Values Section -->
+    <section class="bg-blue-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nos Valeurs Fondamentales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-blue-900 p-8 rounded-lg text-center hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-handshake text-2xl text-blue-900"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Unité Nationale</h3>
+                    <p>Nous croyons en une RDC unie, où toutes les provinces et toutes les ethnies travaillent ensemble pour le bien commun.</p>
+                </div>
+                <div class="bg-blue-900 p-8 rounded-lg text-center hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-balance-scale text-2xl text-blue-900"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Justice Sociale</h3>
+                    <p>Nous nous engageons pour une société plus juste où chaque Congolais a accès aux mêmes opportunités.</p>
+                </div>
+                <div class="bg-blue-900 p-8 rounded-lg text-center hover:shadow-xl transition">
+                    <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-chart-line text-2xl text-blue-900"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Développement Durable</h3>
+                    <p>Notre vision inclut une croissance économique qui profite à tous tout en préservant nos ressources naturelles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Program Section -->
+    <section id="programme" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Notre Programme Politique</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Left Column -->
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-blue-900 font-bold text-xl mr-4">1</div>
+                            <h3 class="text-xl font-bold text-blue-800">Gouvernance et Démocratie</h3>
+                        </div>
+                        <ul class="space-y-3 pl-16">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Renforcement des institutions démocratiques</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Lutte contre la corruption et l'impunité</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Décentralisation effective du pouvoir</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-blue-900 font-bold text-xl mr-4">2</div>
+                            <h3 class="text-xl font-bold text-blue-800">Économie et Emploi</h3>
+                        </div>
+                        <ul class="space-y-3 pl-16">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Création d'emplois pour les jeunes</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Valorisation des ressources locales</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Soutien aux petites et moyennes entreprises</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div>
+                    <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-blue-900 font-bold text-xl mr-4">3</div>
+                            <h3 class="text-xl font-bold text-blue-800">Éducation et Santé</h3>
+                        </div>
+                        <ul class="space-y-3 pl-16">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Accès à l'éducation de base</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Amélioration du système de santé publique</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Formation professionnelle pour tous</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-blue-900 font-bold text-xl mr-4">4</div>
+                            <h3 class="text-xl font-bold text-blue-800">Infrastructures et Environnement</h3>
+                        </div>
+                        <ul class="space-y-3 pl-16">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Développement des infrastructures routières</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Protection de l'environnement et des ressources naturelles</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                <span>Accès à l'eau potable et à l'électricité</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    <i class="fas fa-download mr-2"></i>Télécharger notre programme complet
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- News Section -->
+    <section id="actualites" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Actualités</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- News Card 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1562077982-8d8e8a5a5f9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Meeting politique" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-500 text-sm mb-2">15 Juin 2023</div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-800">Grand meeting à Kinshasa</h3>
+                        <p class="text-gray-600 mb-4">L'APC a rassemblé des milliers de supporters lors de son grand meeting à Kinshasa pour présenter son programme.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-yellow-500 transition">Lire la suite <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Card 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projet éducatif" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-500 text-sm mb-2">2 Juin 2023</div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-800">Lancement du projet éducatif</h3>
+                        <p class="text-gray-600 mb-4">Notre parti a inauguré 5 nouvelles écoles dans la province du Katanga pour améliorer l'accès à l'éducation.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-yellow-500 transition">Lire la suite <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+                
+                <!-- News Card 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md news-card transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1581092921461-39b2f2a8b4e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Rencontre internationale" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="text-yellow-500 text-sm mb-2">20 Mai 2023</div>
+                        <h3 class="text-xl font-bold mb-3 text-blue-800">Rencontre avec des partenaires internationaux</h3>
+                        <p class="text-gray-600 mb-4">Notre délégation a rencontré des partenaires européens pour discuter des investissements en RDC.</p>
+                        <a href="#" class="text-blue-600 font-medium hover:text-yellow-500 transition">Lire la suite <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    Voir toutes les actualités
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="equipe" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Notre Équipe</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md text-center pb-6">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Président" class="w-full h-64 object-cover">
+                    <div class="px-4 mt-4">
+                        <h3 class="text-xl font-bold text-blue-800">Dr. Jean-Luc Mbuyi</h3>
+                        <p class="text-yellow-600 font-medium mb-3">Président du Parti</p>
+                        <p class="text-gray-600 text-sm">Ancien ministre et économiste renommé, il dirige notre parti avec vision et détermination.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md text-center pb-6">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Vice-présidente" class="w-full h-64 object-cover">
+                    <div class="px-4 mt-4">
+                        <h3 class="text-xl font-bold text-blue-800">Mme. Amina Kabasele</h3>
+                        <p class="text-yellow-600 font-medium mb-3">Vice-présidente</p>
+                        <p class="text-gray-600 text-sm">Avocate et militante des droits humains, elle apporte son expertise juridique et sociale.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md text-center pb-6">
+                    <img src="https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Secrétaire général" class="w-full h-64 object-cover">
+                    <div class="px-4 mt-4">
+                        <h3 class="text-xl font-bold text-blue-800">M. Patrick Ntumba</h3>
+                        <p class="text-yellow-600 font-medium mb-3">Secrétaire Général</p>
+                        <p class="text-gray-600 text-sm">Expert en administration publique, il assure le bon fonctionnement de notre organisation.</p>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md text-center pb-6">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a05d5f4c1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Trésorier" class="w-full h-64 object-cover">
+                    <div class="px-4 mt-4">
+                        <h3 class="text-xl font-bold text-blue-800">M. David Mbayo</h3>
+                        <p class="text-yellow-600 font-medium mb-3">Trésorier</p>
+                        <p class="text-gray-600 text-sm">Expert-comptable avec 20 ans d'expérience, il gère nos ressources avec transparence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Join Section -->
+    <section id="adhesion" class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Rejoignez notre mouvement pour le changement</h2>
+                <p class="text-xl mb-8">Ensemble, nous pouvons construire une RDC plus prospère, plus juste et plus unie. Votre voix compte!</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-blue-900 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-900 text-xl">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Adhésion en ligne</h3>
+                        <p class="mb-4">Devenez membre officiel de notre parti en quelques clics.</p>
+                        <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition duration-300 text-sm">Adhérer maintenant</a>
+                    </div>
+                    
+                    <div class="bg-blue-900 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-900 text-xl">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Devenir bénévole</h3>
+                        <p class="mb-4">Contribuez à notre mouvement en donnant de votre temps.</p>
+                        <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition duration-300 text-sm">S'engager</a>
+                    </div>
+                    
+                    <div class="bg-blue-900 p-6 rounded-lg">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-900 text-xl">
+                            <i class="fas fa-donate"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Faire un don</h3>
+                        <p class="mb-4">Soutenez financièrement nos actions pour le changement.</p>
+                        <a href="#" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-2 px-6 rounded-full transition duration-300 text-sm">Contribuer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-blue-800">Contactez-nous</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-xl font-bold text-blue-800 mb-6">Nos coordonnées</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Siège national</h4>
+                                <p class="text-gray-600">Avenue de la Libération 123, Gombe, Kinshasa, RDC</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Téléphone</h4>
+                                <p class="text-gray-600">+243 81 234 5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Email</h4>
+                                <p class="text-gray-600">contact@acr-rdc.cd</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-800 mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Heures d'ouverture</h4>
+                                <p class="text-gray-600">Lundi - Vendredi: 8h - 17h</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Suivez-nous sur les réseaux sociaux</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-blue-800 hover:bg-blue-900 rounded-full flex items-center justify-center text-white transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-400 hover:bg-blue-500 rounded-full flex items-center justify-center text-white transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-red-600 hover:bg-red-700 rounded-full flex items-center justify-center text-white transition">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-pink-600 hover:bg-pink-700 rounded-full flex items-center justify-center text-white transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div>
+                    <form class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nom complet</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Sujet</label>
+                            <select id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="membership">Adhésion au parti</option>
+                                <option value="volunteer">Bénévolat</option>
+                                <option value="donation">Don</option>
+                                <option value="information">Demande d'information</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-800 hover:bg-blue-900 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Alliance pour le Progrès Congolais</h3>
+                    <p class="mb-4">Un parti politique engagé pour la démocratie, le développement et la justice sociale en République Démocratique du Congo.</p>
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-blue-900 font-bold text-sm mr-2">APC</div>
+                        <span class="font-medium">Unis pour une RDC meilleure</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Liens rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="hover:text-yellow-400 transition">Accueil</a></li>
+                        <li><a href="#programme" class="hover:text-yellow-400 transition">Notre Programme</a></li>
+                        <li><a href="#actualites" class="hover:text-yellow-400 transition">Actualités</a></li>
+                        <li><a href="#equipe" class="hover:text-yellow-400 transition">Notre Équipe</a></li>
+                        <li><a href="#contact" class="hover:text-yellow-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- News -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Dernières actualités</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <a href="#" class="font-medium hover:text-yellow-400 transition">Grand meeting à Kinshasa</a>
+                            <p class="text-sm text-blue-200">15 Juin 2023</p>
+                        </div>
+                        <div>
+                            <a href="#" class="font-medium hover:text-yellow-400 transition">Lancement du projet éducatif</a>
+                            <p class="text-sm text-blue-200">2 Juin 2023</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Newsletter -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="mb-4">Abonnez-vous à notre newsletter pour recevoir nos dernières actualités.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Votre email" class="px-4 py-2 text-gray-900 rounded-l-lg focus:outline-none w-full">
+                        <button type="submit" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold px-4 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-blue-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-blue-300 text-sm mb-4 md:mb-0">© 2023 Alliance pour le Progrès Congolais. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-blue-300 hover:text-white transition">Mentions légales</a>
+                    <a href="#" class="text-blue-300 hover:text-white transition">Politique de confidentialité</a>
+                    <a href="#" class="text-blue-300 hover:text-white transition">Conditions d'utilisation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-blue-800 hover:bg-blue-900 text-white rounded-full shadow-lg flex items-center justify-center transition opacity-0 invisible">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>
