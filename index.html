@@ -109,19 +109,18 @@
 <section id="accueil"
          class="relative text-white overflow-hidden w-full  ">
   <div id="hero-carousel"
-       class="relative w-full min-h-[22rem] md:min-h-[28rem]"
+       class="relative w-full min-h-[46rem] md:min-h-[34rem]"
        role="region" aria-roledescription="carousel" aria-label="Hero messages">
 
     <!-- Slide 1 -->
-    <div class="hc-slide absolute inset-0 flex items-center justify-center
+    <div class="hc-slide absolute inset-0 flex items-end justify-center
                 transition-opacity duration-700 opacity-100 bg-center bg-cover bg-no-repeat"
          data-index="0" role="group" aria-roledescription="slide" aria-label="1 sur 3"
          style="background-image:
-                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-                url('/img/hero-1.jpg');">
-      <div class="container mx-auto px-4 py-20 md:py-32 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6">Bâtissons ensemble l'avenir de la RDC</h2>
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Unir · Protéger · Nourrir</p>
+                linear-gradient(rgba(0, 108, 224, 0.45), rgba(191, 223, 255, 0.45)),
+                url('/assets/img/slide-1.webp');">
+      <div class="container mx-auto px-4 py-12 md:py-12 text-center">
+        <h2 class="text-2xl md:text-4xl font-bold mb-6">Bâtissons ensemble l'avenir de la RDC</h2>
         <div class="flex flex-col md:flex-row justify-center gap-4">
           <a href="#adhesion" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300">Adhérer au parti</a>
           <a href="#programme" class="bg-transparent hover:bg-blue-900 border-2 border-white text-white font-bold py-3 px-8 rounded-full transition duration-300">Actualités</a>
@@ -130,15 +129,14 @@
     </div>
 
     <!-- Slide 2 -->
-    <div class="hc-slide absolute inset-0 flex items-center justify-center
+    <div class="hc-slide absolute inset-0 flex items-end justify-center
                 transition-opacity duration-700 opacity-0 pointer-events-none bg-center bg-cover bg-no-repeat"
          data-index="1" role="group" aria-roledescription="slide" aria-label="2 sur 3" aria-hidden="true" tabindex="-1"
          style="background-image:
-                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-                url('/img/hero-2.jpg');">
-      <div class="container mx-auto px-4 py-20 md:py-32 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6">Tous engagés : politique de l’amour</h2>
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">L’amour au cœur, la discipline en garde, l’agriculture en moteur.</p>
+                linear-gradient(rgba(0, 108, 224, 0.45), rgba(191, 223, 255, 0.45)),
+                url('/assets/img/slide-2.webp');">
+      <div class="container mx-auto px-4 py-12 md:py-12 text-center">
+        <h2 class="text-2xl md:text-4xl font-bold mb-6">Tous engagés : politique de l’amour</h2>
         <div class="flex flex-col md:flex-row justify-center gap-4">
           <a href="#adhesion" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300">Rejoindre le mouvement</a>
           <a href="#programme" class="bg-transparent hover:bg-blue-900 border-2 border-white text-white font-bold py-3 px-8 rounded-full transition duration-300">Découvrir le programme</a>
@@ -147,15 +145,14 @@
     </div>
 
     <!-- Slide 3 -->
-    <div class="hc-slide absolute inset-0 flex items-center justify-center
+    <div class="hc-slide absolute inset-0 flex items-end justify-center
                 transition-opacity duration-700 opacity-0 pointer-events-none bg-center bg-cover bg-no-repeat"
          data-index="2" role="group" aria-roledescription="slide" aria-label="3 sur 3" aria-hidden="true" tabindex="-1"
          style="background-image:
-                linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-                url('/img/hero-3.jpg');">
-      <div class="container mx-auto px-4 py-20 md:py-32 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6">Amour civique, sécurité nationale, renaissance agricole</h2>
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Pour une armée forte et disciplinée, portée par une politique agricole ambitieuse.</p>
+                linear-gradient(rgba(0, 108, 224, 0.45), rgba(191, 223, 255, 0.45)),
+                url('/assets/img/slide-3.webp');">
+      <div class="container mx-auto px-4 py-12 md:py-12 text-center">
+        <h2 class="text-2xl md:text-4xl font-bold mb-6">Amour civique, sécurité nationale, renaissance agricole</h2>
         <div class="flex flex-col md:flex-row justify-center gap-4">
           <a href="#adhesion" class="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-bold py-3 px-8 rounded-full transition duration-300">Adhérer maintenant</a>
           <a href="#programme" class="bg-transparent hover:bg-blue-900 border-2 border-white text-white font-bold py-3 px-8 rounded-full transition duration-300">Voir les actualités</a>
@@ -165,10 +162,10 @@
 
     <!-- Contrôles -->
     <button type="button" aria-label="Précédent"
-            class="hc-prev absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30
+            class="hc-prev absolute left-3 md:left-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30
                    backdrop-blur px-3 py-2 rounded-full focus:outline-none focus:ring z-10">‹</button>
     <button type="button" aria-label="Suivant"
-            class="hc-next absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30
+            class="hc-next absolute right-3 md:right-6 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30
                    backdrop-blur px-3 py-2 rounded-full focus:outline-none focus:ring z-10">›</button>
 
     <!-- Indicateurs -->
